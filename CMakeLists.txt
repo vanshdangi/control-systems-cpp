@@ -13,6 +13,7 @@ add_library(ControlSystems
     src/controllers/p_controller.cpp
     src/controllers/pi_controller.cpp
     src/controllers/pd_controller.cpp
+    src/controllers/pid_controller.cpp
 
     # Plants
     src/plants/point_mass.cpp
