@@ -1,18 +1,19 @@
 #include <iostream>
 
 #include <plants/point_mass.hpp>
+#include <plants/spring_mass_damper.hpp>
 #include <controllers/p_controller.hpp>
 
 
 int main()
 {
-    PointMass plant;
+    SpringMassDamper plant(1.0, 2.0, 1.0);
     PController controller(2.0);
 
-    const double target = 10.0;
+    const double target = 20.0;
     const double dt = 0.01;
 
-    for(double t = 0.0; t < 10.0; t += dt){
+    for(double t = 0.0; t < 100.0; t += dt){
         State state = plant.state();
         double force = controller.update(target, state, dt);
         plant.update(force, dt);

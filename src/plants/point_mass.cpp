@@ -13,8 +13,8 @@ void PointMass::update(double force, double dt){
     }
 
 State PointMass::state() const{
-        return {position_, velocity_};
-    }
+    return {position_, velocity_};
+}
 
 void PointMass::reset(){
     position_ = 0.0;
