@@ -1,3 +1,5 @@
+#pragma once
+
 class LowPassFilter {
 public:
     explicit LowPassFilter(double alpha = 0.9);

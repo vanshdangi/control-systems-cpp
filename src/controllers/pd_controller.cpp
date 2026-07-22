@@ -1,15 +1,26 @@
 #include <controllers/pd_controller.hpp>
+#include <algorithm>
 
-PDController::PDController(double kp, double kd)
-    : kp_(kp), kd_(kd)
+PDController::PDController(double kp, double kd, double minOutput, double maxOutput)
+    : kp_(kp), kd_(kd), minOutput_(minOutput), maxOutput_(maxOutput)
 {}
 
 // multiplies the constatnt kp_ with the error i.e. (desired position - current position) then adds the derivative of error multiplied with constant ki_
 double PDController::update(double setpoint, const State& state, double dt){
     double error = setpoint - state.position;
-    return kp_*error + kd_*derivative_.update(error, dt);
+
+    // Derivative
+    double rawDerivative = derivative_.update(error, dt);
+    double filteredDerivative = derivativeFilter_.update(rawDerivative);
+
+    // Output
+    double unclampedOutput = kp_*error + filteredDerivative;
+    double output = std::clamp(unclampedOutput, minOutput_, maxOutput_);
+
+    return output;
 }
 
 void PDController::reset(){
     derivative_.reset();
+    derivativeFilter_.reset();
 }
