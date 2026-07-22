@@ -12,12 +12,13 @@ add_library(ControlSystems
     # Controllers
     src/controllers/p_controller.cpp
 
-    # Core
-    src/core/controller.cpp
-
     # Plants
     src/plants/point_mass.cpp
     src/plants/spring_mass_damper.cpp
+
+    # Maths
+    src/math/integrator.cpp
+    src/math/numerical_derivative.cpp
 )
 
 # Public headers
