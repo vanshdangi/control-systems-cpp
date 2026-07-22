@@ -14,6 +14,9 @@ add_library(ControlSystems
     src/controllers/pi_controller.cpp
     src/controllers/pd_controller.cpp
     src/controllers/pid_controller.cpp
+    
+    #Filters
+    src/filters/low_pass_filter.cpp
 
     # Plants
     src/plants/point_mass.cpp
