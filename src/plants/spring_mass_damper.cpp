@@ -1,4 +1,5 @@
 #include <plants/spring_mass_damper.hpp>
+#include <cmath>
 
 SpringMassDamper::SpringMassDamper(double mass,
                             double springConstant,
@@ -9,10 +10,14 @@ SpringMassDamper::SpringMassDamper(double mass,
 // ma = f - cv - kx
 // m = mass, a  = acceleration, f = force, c = damping constant, v = velocity, k = spring constant, x = position
 void SpringMassDamper::update(double force, double dt){
-    double springForce = -k_ * position_;
-    double dampingForce = -c_ * velocity_;
+    if (dt <= 0.0 || !std::isfinite(dt)) {
+        return;
+    }
 
-    double acceleration = (force + springForce + dampingForce)/mass_;
+    const double springForce = -k_ * position_;
+    const double dampingForce = -c_ * velocity_;
+
+    const double acceleration = (force + springForce + dampingForce) / mass_;
     velocity_ += acceleration * dt;
     position_ += velocity_ * dt;
 

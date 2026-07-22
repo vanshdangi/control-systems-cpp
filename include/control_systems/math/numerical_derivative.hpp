@@ -3,6 +3,7 @@
 class NumericalDerivative{
 public:
     double update(double input, double dt);
+    double value() const;
     void reset();
 
 private:

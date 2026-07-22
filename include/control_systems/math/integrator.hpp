@@ -5,6 +5,7 @@ public:
     Integrator() = default;
 
     double update(double input, double dt);
+    double value() const;
     void reset();
 
 private:
