@@ -11,6 +11,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_library(ControlSystems
     # Controllers
     src/controllers/p_controller.cpp
+    src/controllers/pi_controller.cpp
+    src/controllers/pd_controller.cpp
 
     # Plants
     src/plants/point_mass.cpp
