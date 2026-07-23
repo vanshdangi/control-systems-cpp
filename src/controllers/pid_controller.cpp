@@ -27,8 +27,8 @@ double PIDController::update(double setpoint, const State& state, double dt){
     double output = std::clamp(unclampedOutput, minOutput_, maxOutput_);
 
     // Update integrator for the NEXT control cycle
-    bool atUpperLimit = output >= maxOutput_;
-    bool atLowerLimit = output <= minOutput_;
+    bool atUpperLimit = unclampedOutput >= maxOutput_;
+    bool atLowerLimit = unclampedOutput <= minOutput_;
 
     bool allowIntegration =
         !(atUpperLimit && error > 0) &&

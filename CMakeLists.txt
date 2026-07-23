@@ -21,6 +21,7 @@ add_library(ControlSystems
     # Plants
     src/plants/point_mass.cpp
     src/plants/spring_mass_damper.cpp
+    src/plants/dc_motor.cpp
 
     # Maths
     src/math/integrator.cpp
