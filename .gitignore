@@ -1,6 +1,10 @@
 # VScode build files
 *.vscode
 
+# Logs
+output/*.csv
+logs/*.txt
+
 # Prerequisites
 *.d
 
