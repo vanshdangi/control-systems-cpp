@@ -12,7 +12,7 @@ public:
                         double maxOutput = std::numeric_limits<double>::infinity()
                     );
 
-    double update(double setpoint, const State& state, double dt) override;
+    double update(double setpoint, double measurement, double dt) override;
 
     void reset() override;
 

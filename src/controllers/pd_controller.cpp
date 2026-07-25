@@ -6,8 +6,8 @@ PDController::PDController(double kp, double kd, double minOutput, double maxOut
 {}
 
 // multiplies the constatnt kp_ with the error i.e. (desired position - current position) then adds the derivative of error multiplied with constant ki_
-double PDController::update(double setpoint, const State& state, double dt){
-    double error = setpoint - state.position;
+double PDController::update(double setpoint, double measurement, double dt){
+    double error = setpoint - measurement;
 
     // Derivative
     double rawDerivative = derivative_.update(error, dt);

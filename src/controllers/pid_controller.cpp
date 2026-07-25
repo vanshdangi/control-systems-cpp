@@ -10,8 +10,8 @@ PIDController::PIDController(double kp,
 {}
 
 // multiplies the constatnt kp_ with the error i.e. (desired position - current position) then adds the integration of error multiplied with constant ki_
-double PIDController::update(double setpoint, const State& state, double dt){
-    double error = setpoint - state.position;
+double PIDController::update(double setpoint, double measurement, double dt){
+    double error = setpoint - measurement;
 
     // Derivative
     double rawDerivative = derivative_.update(error, dt);

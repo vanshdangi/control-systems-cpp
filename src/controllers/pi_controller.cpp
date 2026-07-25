@@ -6,8 +6,8 @@ PIController::PIController(double kp, double ki, double minOutput, double maxOut
 {}
 
 // multiplies the constatnt kp_ with the error i.e. (desired position - current position) then adds the integration of error multiplied with constant ki_
-double PIController::update(double setpoint, const State& state, double dt){
-    double error = setpoint - state.position;
+double PIController::update(double setpoint, double measurement, double dt){
+    double error = setpoint - measurement;
 
     // PI
     double p = kp_ * error;
