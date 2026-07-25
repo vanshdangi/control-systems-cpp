@@ -8,6 +8,7 @@ public:
 
     void update(double force, double dt) override;
     State state() const override;
+    void setState(double position, double velocity) override;
     void reset() override;
 
 private:

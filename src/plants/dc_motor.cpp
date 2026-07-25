@@ -8,7 +8,7 @@ DCMotor::DCMotor(
             double backEmfConstant,
             double inertia,
             double friction
-        ) : resistance_(resistance), inductance_(inductance), torqueConstant_(torqueConstant), backEmfConstant_(backEmfConstant), inertia_(inertia), friction_(friction){
+        ) : resistance_(resistance), inductance_(inductance), torqueConstant_(torqueConstant), backEmfConstant_(backEmfConstant), inertia_(inertia), friction_(friction), position_(0.0), velocity_(0.0), current_(0.0), loadTorque_(0.0){
     assert(inductance > 0.0);
     assert(inertia > 0.0);
     assert(resistance >= 0.0);
@@ -38,9 +38,23 @@ State DCMotor::state() const{
     return {position_, velocity_};
 }
 
+void DCMotor::setState(double position, double velocity, double current){
+    position_ = position;
+    velocity_ = velocity;
+    current_ = current;
+}
+
+void DCMotor::setState(double position, double velocity){
+    position_ = position;
+    velocity_ = velocity;
+}
+
 void DCMotor::reset(){
     velocity_ = 0.0;
     position_ = 0.0;
     current_ = 0.0;
     loadTorque_ = 0.0;
+    currentIntegrator_.reset();
+    velocityIntegrator_.reset();
+    positionIntegrator_.reset();
 }

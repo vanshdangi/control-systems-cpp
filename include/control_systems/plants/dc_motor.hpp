@@ -17,6 +17,8 @@ public:
     void update(double voltage, double dt) override;
     void setLoadTorque(double torque);
     State state() const override;
+    void setState(double position, double velocity) override;
+    void setState(double position, double velocity, double current);
     void reset() override;
 
 private:

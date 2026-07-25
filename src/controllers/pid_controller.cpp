@@ -4,9 +4,10 @@
 PIDController::PIDController(double kp,
                             double ki,
                             double kd,
+                            double alpha,
                             double minOutput,
                             double maxOutput
-                        ): kp_(kp), ki_(ki), kd_(kd), minOutput_(minOutput), maxOutput_(maxOutput)
+                        ): kp_(kp), ki_(ki), kd_(kd), derivativeFilter_(alpha), minOutput_(minOutput), maxOutput_(maxOutput)
 {}
 
 // multiplies the constatnt kp_ with the error i.e. (desired position - current position) then adds the integration of error multiplied with constant ki_

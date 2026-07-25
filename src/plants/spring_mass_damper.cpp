@@ -27,6 +27,11 @@ State SpringMassDamper::state() const{
     return {position_, velocity_};
 }
 
+void SpringMassDamper::setState(double position, double velocity){
+    position_ = position;
+    velocity_ = velocity;
+}
+
 void SpringMassDamper::reset(){
     position_ = 0.0;
     velocity_ = 0.0;

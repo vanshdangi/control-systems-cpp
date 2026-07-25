@@ -20,6 +20,11 @@ State PointMass::state() const{
     return {position_, velocity_};
 }
 
+void PointMass::setState(double position, double velocity){
+    position_ = position;
+    velocity_ = velocity;
+}
+
 void PointMass::reset(){
     position_ = 0.0;
     velocity_ = 0.0;

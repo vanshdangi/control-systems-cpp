@@ -8,6 +8,7 @@ class PDController : public Controller{
 public:
     explicit PDController(double kp,
                         double kd,
+                        double alpha = 0.9,
                         double minOutput = -std::numeric_limits<double>::infinity(),
                         double maxOutput = std::numeric_limits<double>::infinity()
                     );

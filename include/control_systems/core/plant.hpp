@@ -7,6 +7,8 @@ public:
 
     virtual State state() const = 0;
 
+    virtual void setState(double position, double velocity) = 0;
+
     virtual void reset() = 0;
 
     virtual ~Plant() = default;
