@@ -26,6 +26,9 @@ add_library(ControlSystems
     # Maths
     src/math/integrator.cpp
     src/math/numerical_derivative.cpp
+
+    # Utils
+    src/utils/csv_logger.cpp
 )
 
 # Public headers
@@ -42,6 +45,25 @@ add_executable(ControlSystemsApp
 target_link_libraries(ControlSystemsApp
     PRIVATE ControlSystems
 )
+
+# Examples
+set(EXAMPLES
+    p_point_mass
+    pid_point_mass
+    pid_spring_mass_damper
+    pid_dc_motor_position
+    pid_dc_motor_speed
+)
+
+foreach(example ${EXAMPLES})
+    add_executable(${example}
+        examples/${example}.cpp
+    )
+
+    target_link_libraries(${example}
+        PRIVATE ControlSystems
+    )
+endforeach()
 
 # Compiler warnings
 if(MSVC)
