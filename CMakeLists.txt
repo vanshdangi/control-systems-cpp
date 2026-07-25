@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.20)
 
 project(ControlSystems LANGUAGES CXX)
 
-# C++ Standard
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -14,8 +13,8 @@ add_library(ControlSystems
     src/controllers/pi_controller.cpp
     src/controllers/pd_controller.cpp
     src/controllers/pid_controller.cpp
-    
-    #Filters
+
+    # Filters
     src/filters/low_pass_filter.cpp
 
     # Plants
@@ -23,7 +22,7 @@ add_library(ControlSystems
     src/plants/spring_mass_damper.cpp
     src/plants/dc_motor.cpp
 
-    # Maths
+    # Math
     src/math/integrator.cpp
     src/math/numerical_derivative.cpp
 
@@ -31,41 +30,11 @@ add_library(ControlSystems
     src/utils/csv_logger.cpp
 )
 
-# Public headers
 target_include_directories(ControlSystems
     PUBLIC
         include/control_systems
 )
 
-# Executable
-add_executable(ControlSystemsApp
-    app/main.cpp
-)
-
-target_link_libraries(ControlSystemsApp
-    PRIVATE ControlSystems
-)
-
-# Examples
-set(EXAMPLES
-    p_point_mass
-    pid_point_mass
-    pid_spring_mass_damper
-    pid_dc_motor_position
-    pid_dc_motor_speed
-)
-
-foreach(example ${EXAMPLES})
-    add_executable(${example}
-        examples/${example}.cpp
-    )
-
-    target_link_libraries(${example}
-        PRIVATE ControlSystems
-    )
-endforeach()
-
-# Compiler warnings
 if(MSVC)
     target_compile_options(ControlSystems PRIVATE /W4)
 else()
@@ -75,3 +44,9 @@ else()
         -Wpedantic
     )
 endif()
+
+enable_testing()
+
+add_subdirectory(app)
+add_subdirectory(examples)
+add_subdirectory(tests)
