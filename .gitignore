@@ -1,7 +1,7 @@
 # VScode build files
 *.vscode
 
-# Logs
+# Logs / Output
 output/*.csv
 logs/*.txt
 

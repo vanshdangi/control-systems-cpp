@@ -1,12 +1,9 @@
-#include <plants/point_mass.hpp>
 #include <cmath>
+#include <control_systems/plants/point_mass.hpp>
 
-PointMass::PointMass(double mass)
-    : mass_(mass), position_(0.0), velocity_(0.0)
-{}
+PointMass::PointMass(double mass) : mass_(mass), position_(0.0), velocity_(0.0) {}
 
-// Applies the force and calculates new position and velocity.
-void PointMass::update(double force, double dt){
+void PointMass::update(double force, double dt) {
     if (dt <= 0.0 || !std::isfinite(dt)) {
         return;
     }
@@ -16,16 +13,16 @@ void PointMass::update(double force, double dt){
     position_ += velocity_ * dt;
 }
 
-State PointMass::state() const{
+State PointMass::state() const {
     return {position_, velocity_};
 }
 
-void PointMass::setState(double position, double velocity){
+void PointMass::setState(double position, double velocity) {
     position_ = position;
     velocity_ = velocity;
 }
 
-void PointMass::reset(){
+void PointMass::reset() {
     position_ = 0.0;
     velocity_ = 0.0;
 }

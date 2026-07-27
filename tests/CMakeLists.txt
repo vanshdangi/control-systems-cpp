@@ -1,5 +1,5 @@
 include(FetchContent)
-
+cmake_policy(SET CMP0135 NEW)
 FetchContent_Declare(
     googletest
     URL https://github.com/google/googletest/archive/refs/tags/v1.17.0.zip

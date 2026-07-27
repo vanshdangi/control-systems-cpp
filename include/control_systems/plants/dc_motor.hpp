@@ -1,18 +1,16 @@
 #pragma once
-#include <core/state.hpp>
-#include <core/plant.hpp>
-#include <math/integrator.hpp>
+#include <control_systems/core/plant.hpp>
+#include <control_systems/core/state.hpp>
+#include <control_systems/math/integrator.hpp>
 
-class DCMotor : public Plant{
-public:
-    explicit DCMotor(
-            double resistance,
-            double inductance,
-            double torqueConstant,
-            double backEmfConstant,
-            double inertia,
-            double friction
-        );
+class DCMotor : public Plant {
+  public:
+    explicit DCMotor(double resistance,
+                     double inductance,
+                     double torqueConstant,
+                     double backEmfConstant,
+                     double inertia,
+                     double friction);
 
     void update(double voltage, double dt) override;
     void setLoadTorque(double torque);
@@ -21,7 +19,7 @@ public:
     void setState(double position, double velocity, double current);
     void reset() override;
 
-private:
+  private:
     double velocity_;
     double position_;
     double current_;

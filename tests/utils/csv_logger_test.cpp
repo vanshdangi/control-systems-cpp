@@ -1,15 +1,14 @@
-#include <gtest/gtest.h>
-#include <utils/csv_logger.hpp>
+#include <control_systems/utils/csv_logger.hpp>
 #include <cstdio>
 #include <fstream>
+#include <gtest/gtest.h>
 #include <string>
 
-
-namespace{
-    constexpr const char* kFilename = "test_logger.csv";
+namespace {
+constexpr const char* kFilename = "test_logger.csv";
 }
 
-TEST(CsvLogger, WritesHeader){
+TEST(CsvLogger, WritesHeader) {
     {
         CsvLogger logger(kFilename);
         logger.writeHeader({"Time", "Position", "Velocity", "Control"});
@@ -27,7 +26,7 @@ TEST(CsvLogger, WritesHeader){
     std::remove(kFilename);
 }
 
-TEST(CsvLogger, WritesSingleRow){
+TEST(CsvLogger, WritesSingleRow) {
     {
         CsvLogger logger(kFilename);
 
@@ -52,7 +51,7 @@ TEST(CsvLogger, WritesSingleRow){
     std::remove(kFilename);
 }
 
-TEST(CsvLogger, WritesMultipleRows){
+TEST(CsvLogger, WritesMultipleRows) {
     {
         CsvLogger logger(kFilename);
 
@@ -86,7 +85,7 @@ TEST(CsvLogger, WritesMultipleRows){
     std::remove(kFilename);
 }
 
-TEST(CsvLogger, WritesEmptyHeader){
+TEST(CsvLogger, WritesEmptyHeader) {
     {
         CsvLogger logger(kFilename);
         logger.writeHeader({});

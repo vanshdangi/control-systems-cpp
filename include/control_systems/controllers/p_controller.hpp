@@ -1,19 +1,16 @@
 #pragma once
-#include <core/controller.hpp>
+#include <control_systems/core/controller.hpp>
 #include <limits>
 
-class PController : public Controller{
-public:
+class PController : public Controller {
+  public:
     explicit PController(double kp,
-                        double minOutput = -std::numeric_limits<double>::infinity(),
-                        double maxOutput = std::numeric_limits<double>::infinity()
-                    );
-
+                         double minOutput = -std::numeric_limits<double>::infinity(),
+                         double maxOutput = std::numeric_limits<double>::infinity());
     double update(double setpoint, double measurement, double dt) override;
-
     void reset() override;
 
-private:
+  private:
     double kp_;
     double minOutput_;
     double maxOutput_;

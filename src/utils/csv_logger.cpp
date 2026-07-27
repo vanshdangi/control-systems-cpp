@@ -1,15 +1,11 @@
-#include <utils/csv_logger.hpp>
+#include <control_systems/utils/csv_logger.hpp>
 
-CsvLogger::CsvLogger(const std::string& filename)
-    :file_(filename)
-{}
+CsvLogger::CsvLogger(const std::string& filename) : file_(filename) {}
 
-void CsvLogger::writeHeader(std::initializer_list<std::string> headers)
-{
+void CsvLogger::writeHeader(std::initializer_list<std::string> headers) {
     bool first = true;
 
-    for (const auto& header : headers)
-    {
+    for (const auto& header : headers) {
         if (!first)
             file_ << ',';
 
@@ -20,11 +16,6 @@ void CsvLogger::writeHeader(std::initializer_list<std::string> headers)
     file_ << '\n';
 }
 
-void CsvLogger::write(double time,
-                    const State& state,
-                    double control){
-    file_ << time << ','
-        << state.position << ','
-        << state.velocity << ','
-        << control << '\n';
+void CsvLogger::write(double time, const State& state, double control) {
+    file_ << time << ',' << state.position << ',' << state.velocity << ',' << control << '\n';
 }

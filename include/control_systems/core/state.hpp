@@ -1,6 +1,6 @@
 #pragma once
 
-struct State{
+struct State {
     double position;
     double velocity;
 };

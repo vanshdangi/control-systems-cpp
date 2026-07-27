@@ -32,7 +32,7 @@ add_library(ControlSystems
 
 target_include_directories(ControlSystems
     PUBLIC
-        include/control_systems
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 if(MSVC)

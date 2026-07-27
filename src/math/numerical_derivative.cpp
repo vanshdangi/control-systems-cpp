@@ -1,8 +1,8 @@
-#include <math/numerical_derivative.hpp>
 #include <cmath>
+#include <control_systems/math/numerical_derivative.hpp>
 
-double NumericalDerivative::update(double input, double dt){
-    if(!initialized_){
+double NumericalDerivative::update(double input, double dt) {
+    if (!initialized_) {
         previous_ = input;
         initialized_ = true;
         derivative_ = 0.0;
@@ -19,11 +19,11 @@ double NumericalDerivative::update(double input, double dt){
     return derivative_;
 }
 
-double NumericalDerivative::value() const{
+double NumericalDerivative::value() const {
     return derivative_;
 }
 
-void NumericalDerivative::reset(){
+void NumericalDerivative::reset() {
     derivative_ = 0.0;
     previous_ = 0.0;
     initialized_ = false;

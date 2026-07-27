@@ -1,13 +1,12 @@
 #pragma once
 
 class LowPassFilter {
-public:
+  public:
     explicit LowPassFilter(double alpha = 0.9);
-
     double update(double input);
     void reset();
 
-private:
+  private:
     double alpha_;
     double previousOutput_ = 0.0;
     bool initialized_ = false;
